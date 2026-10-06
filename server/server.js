@@ -4,7 +4,13 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'job-tracker-p-edd1.vercel.app', // replace with your actual Vercel URL
+  ],
+  credentials: true,
+}));
 app.use(express.json());
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/applications', require('./routes/applicationRoutes'));
